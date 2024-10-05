@@ -10,6 +10,7 @@
         <PackageId>EFCoreAddQueryFilter</PackageId>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/HerveZu/EntityFramework.Extensions.AddQueryFilter</RepositoryUrl>
+        <PackageReadmeFile>../README.md</PackageReadmeFile>
         <Authors>Hervé Zucchinetti</Authors>
         <Description>Extensions to add query filters using EntityFramework.</Description>
     </PropertyGroup>
