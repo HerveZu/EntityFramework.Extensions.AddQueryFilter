@@ -10,11 +10,15 @@
         <PackageId>EFCoreAddQueryFilter</PackageId>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/HerveZu/EntityFramework.Extensions.AddQueryFilter</RepositoryUrl>
-        <PackageReadmeFile>../README.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <Authors>Hervé Zucchinetti</Authors>
         <Description>Extensions to add query filters using EntityFramework.</Description>
     </PropertyGroup>
 
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+    
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2024.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
