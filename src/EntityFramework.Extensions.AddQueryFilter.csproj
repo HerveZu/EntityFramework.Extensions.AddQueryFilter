@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>EntityFramework.Extensions.AddQueryFilter</PackageId>
+        <PackageId>EFCoreAddQueryFilter</PackageId>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/HerveZu/EntityFramework.Extensions.AddQueryFilter</RepositoryUrl>
         <Authors>Hervé Zucchinetti</Authors>
