@@ -8,13 +8,20 @@ using Microsoft.EntityFrameworkCore.Query;
 namespace EntityFramework.Extensions.AddQueryFilter;
 
 /// <summary>
-///     Dark magic, refer to https://gist.github.com/haacked/febe9e88354fb2f4a4eb11ba88d64c24
+/// Dark magic, refer to https://gist.github.com/haacked/febe9e88354fb2f4a4eb11ba88d64c24
 /// </summary>
 public static class ModelBuilderExtensions
 {
     private static readonly MethodInfo _convertAndAppendQueryFilterMethod = typeof(ModelBuilderExtensions)
         .GetMethod(nameof(ConvertAndAppendQueryFilter), BindingFlags.NonPublic | BindingFlags.Static)!;
 
+    /// <summary>
+    /// Adds a query filter on all entities assignable to <see cref="TBaseEntity"/>.
+    /// <remarks>Query filters are joined using a && expression.</remarks>
+    /// </summary>
+    /// <param name="builder">The model builder to apply the query filters on</param>
+    /// <param name="filterExpression">The filter expression</param>
+    /// <typeparam name="TBaseEntity">The entity type used to select the entities to apply the filter on</typeparam>
     [PublicAPI]
     public static void AddQueryFilterOnAllEntities<TBaseEntity>(
         this ModelBuilder builder,
@@ -31,13 +38,19 @@ public static class ModelBuilderExtensions
         }
     }
 
+    /// <summary>
+    /// Adds a query filter on <see cref="TEntity"/>.
+    /// <remarks>Query filters are joined using a && expression.</remarks>
+    /// </summary>
+    /// <param name="builder">The model builder to apply the query filters on</param>
+    /// <param name="filterExpression">The filter expression</param>
     [PublicAPI]
     public static void AddQueryFilter<TEntity>(
-        this EntityTypeBuilder<TEntity> entityTypeBuilder,
-        Expression<Func<TEntity, bool>> expression)
+        this EntityTypeBuilder<TEntity> builder,
+        Expression<Func<TEntity, bool>> filterExpression)
         where TEntity : class
     {
-        entityTypeBuilder.AppendQueryFilter(expression);
+        builder.AppendQueryFilter(filterExpression);
     }
 
     private static void AppendQueryFilter<TBaseEntity>(
